@@ -9,7 +9,8 @@
                  [reagent "0.8.1"]]
 
   :plugins [[lein-cljsbuild "1.1.7"]
-            [lein-figwheel "0.5.18"]]
+            [lein-figwheel "0.5.18"]
+            [cider/cider-nrepl "0.21.0"]]
 
   :clean-targets ^{:protect false}
   [:target-path
