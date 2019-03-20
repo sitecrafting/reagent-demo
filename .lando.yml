@@ -1,0 +1,26 @@
+name: lando-clojure-app
+config:
+  webroot: .
+
+services:
+  clojure:
+    type: compose
+
+    services:
+      # Use the Canonical Clojure Docker image
+      image: clojure:openjdk-8-lein
+      # Do nothing forever:
+      # by default, we just want to keep the container running
+      command: tail -f /dev/null
+      # Expose default Figwheel and REPL ports on the host machine
+      # NOTE: These ports must be available on your computer or building
+      # this Lando app will fail!
+      ports:
+        - '3449:3449'
+        - '7002:7002'
+
+tooling:
+  # Support commands like `lando lein repl` and `lando lein figwheel`
+  lein:
+    cmd: lein
+    service: clojure

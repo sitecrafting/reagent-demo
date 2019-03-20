@@ -1,0 +1,5 @@
+*.log
+.lein-repl-history
+.nrepl-port
+.rebel_readline_history
+public/js/out
