@@ -2,7 +2,11 @@
 .lein-repl-history
 .nrepl-port
 .rebel_readline_history
-public/js/out
-target/stale/
+
+# builds
+public/js/
+target/
+
+# cache
 nashorn_code_cache
 .cljs_nashorn_repl
