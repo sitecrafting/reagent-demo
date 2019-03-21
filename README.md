@@ -40,6 +40,10 @@ app:reagent-demo.core=> (swap! state update :spaceships (fn [ships] (sort-by :na
 app:reagent-demo.core=> (swap! state update :spaceships conj {:id 123 :name "My Very Own Spaceship"})
 ```
 
+### Next Steps
+
+Check out the `reverse-ships-button` and `new-ship` branches for more advanced use-cases!
+
 ## Building for production
 
 ```
