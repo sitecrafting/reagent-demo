@@ -15,7 +15,12 @@
   "Transforms the current app-state into the desired new state according to
   action and value"
   (case action
-    :update-ship (assoc current-state :selection value)))
+    :update-ship (assoc current-state :selection value)
+
+    :reverse-ships (update current-state
+                           :spaceships
+                           (fn [ships]
+                             (vec (reverse ships))))))
 
 (defn emit! [action value]
   "Get the new, transformed app state according to action and value,
@@ -56,7 +61,8 @@
         [spaceship ship])
       ; The collection of things we're mapping over:
       (:spaceships @state))]
-   [best-spaceship (:selection @state)]])
+   [best-spaceship (:selection @state)]
+   [:button {:on-click #(emit! :reverse-ships nil)} "Reverse!"]])
 
 ;; -------------------------
 ;; Initialize app
