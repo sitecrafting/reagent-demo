@@ -29,6 +29,12 @@
    {:on-click #(emit! :update-ship ship)}
    (:name ship)])
 
+(defn best-spaceship [ship]
+	(if (some? (:id ship))
+    (let [{:keys [name id]} ship]
+      [:strong (str "You said it! The best spaceship is: " name " (ID: " id ")")])
+    [:p "Who knows what the best spaceship is??"]))
+
 (defn home-page []
   [:div
    [:h2 "Welcome to Reagent on Lando!"]
@@ -38,11 +44,7 @@
       (fn [ship]
         ^{:key (:id ship)} [spaceship ship])
       (:spaceships @state))]
-   [:strong (str "You said it! The best spaceship is: "
-                 (get-in @state [:selection :name])
-                 " (ID: "
-                 (get-in @state [:selection :id])
-                 ")")]])
+   [best-spaceship (:selection @state)]])
 
 ;; -------------------------
 ;; Initialize app
